@@ -1,0 +1,29 @@
+
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-5" id="sachchitiet" >
+             {{#with book}}
+            <img src={{imagePath}} alt="sach">
+        </div>
+        <div class="col">
+            <ul>
+               
+                <h4>{{title}}</h4>
+                <li>ISBN:  {{isbn}}</li>
+                <li>Thể loại:   {{category}}</li>
+                <li>Tác giả:  {{author}}</li>
+                <li>Nhà xuất bản:   {{publisher}}</li>
+                <li>Năm xuất bản:   {{publishYear}}</li>
+                <li>Ngôn ngữ:   {{language}}</li>
+                <li>Số lượng:   {{amount}}</li>
+                <li>Nội dung:   {{description}}</li>
+
+          <a class="button primary-btn add-to-cart" role="button" style="color: aliceblue;"  data-id ="{{id}}">Thêm vào giỏ</a>    
+                {{/with}}
+           
+            </ul>
+        </div>
+    </div>
+</div>

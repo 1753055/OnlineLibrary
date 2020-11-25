@@ -1,0 +1,157 @@
+  <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendors/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="/vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="/vendors/nice-select/nice-select.css">
+  <link rel="stylesheet" href="/vendors/owl-carousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="/vendors/owl-carousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/category.css">
+
+	<!-- ================ category section start ================= -->		  
+  <section class="section-margin--small mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+          <div class="sidebar-categories">
+            <div class="head">Thể loại</div>
+            <ul class="main-categories">
+              <li class="common-filter">
+                <form action="#">
+                  <ul>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Science" onclick="selectParam('type',this.id)" name="Science"><label for="Science">Science</label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Lesson Plan" onclick="selectParam('type',this.id)" name="Lesson Plan"><label for="Lesson Plan">Lesson Plan</label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Thesis" onclick="selectParam('type',this.id)" name="Thesis"><label for="Thesis">Thesis</label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Programming" onclick="selectParam('type',this.id)" name="Programming"><label for="Programming">Programming</label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Science fiction" onclick="selectParam('type',this.id)" name="Science fiction"><label for="Science fiction">Science fiction</label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Algorithm" onclick="selectParam('type',this.id)" name="Algorithm"><label for="Algorithm">Algorithm</label></li>
+                  </ul>
+                </form>
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-7">
+          <!-- Start Filter Bar -->
+          <div class="filter-bar d-flex flex-wrap align-items-center">
+            <div class="sorting">
+              <select id="sort" onchange="selectParam('sort', this.value)">
+                <option value="title">Tăng dần theo tên</option>
+                <option value="amount">Tăng dần theo số lượng</option>
+                <option value="default">Mặc định</option>
+              </select>
+            </div>
+            <div  class="sorting mr-auto">
+              <select id="limit" onchange="selectParam('limit', this.value)">
+                <option value="9">Xem 9</option>
+                <option value="18">Xem 18</option>
+                <option value="36">Xem 36</option>
+              </select>
+            </div>
+            <div>
+              <form action="/books" method="GET"></form>
+                <div class="input-group filter-bar-search">
+                  <input type="text" name="search" placeholder="Search">
+                  <div class="input-group-append">
+                    <button type="submit"><i class="ti-search"></i></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- End Filter Bar -->
+          <!-- Start Best Seller -->
+          <div class="listBook">
+        {{#each book}}
+        <div class="row" id="coverBook">
+          <div class="col-3" id="book">
+            <a href="/books/{{id}}"><img class="imgBook" src='{{thumbnailPath}}' alt=""></a>
+          </div>
+          <div class="col-4" id='text'>
+            <p>Tên sách: {{title}}</p>
+            <p>ISBN: {{isbn}}</p>
+            <p>Thể loại: {{category}}</p>
+            <p>Tác giả: {{author}}</p>
+            <p>Ngôn ngữ: {{language}}</p>
+            <p>Nhà xuất bản: {{publisher}}</p>
+            <p>Năm xuất bản: {{publishYear}}</p>
+            <p>Nội dung: {{description}}</p>
+            <p>Số lượng: {{amount}}</p>
+          </div>
+          <div class="product-count col offset-lg-1">
+            <br><br>
+            <div id="error-message"></div>
+            <br><br>
+          <a class="button primary-btn add-to-cart" role="button" style="color: aliceblue;"  data-id ="{{id}}">Thêm vào giỏ</a>               
+						</div>
+            
+        </div>
+        {{/each}}
+    </div>
+              <div class="row justify-content-center">{{{ createPagination pagination leftText="Prev" rightText="Next" paginationClass="pagination"}}}</div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+	<!-- ================ category section end ================= -->		  
+
+  <script src="/vendors/jquery/jquery-3.2.1.min.js"></script>
+  <script src="/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="/vendors/skrollr.min.js"></script>
+  <script src="/vendors/owl-carousel/owl.carousel.min.js"></script>
+  <script src="/vendors/nice-select/jquery.nice-select.min.js"></script>
+  <script src="/vendors/jquery.ajaxchimp.min.js"></script>
+  <script src="/vendors/mail-script.js"></script>
+
+  <script>
+
+     let urlParams = new URLSearchParams(location.search);
+
+    let params = {
+      limit: 9,
+      sort: 'title',
+      search: '',
+      page: 1,
+      Science:0
+    }
+    for (let key in params){
+      if (!urlParams.has(key)){
+        urlParams.append(key, params[key]);
+      }
+    }
+
+    $(document).ready(()=> {
+      $('#Science').prop('checked');
+      let checkboxes = ['Science','Lesson Plan','Thesis','Programming','Science fiction','Algorithm'];
+      for(let key of checkboxes)
+      {
+        let control = $(`#${key}${urlParams.get(key)}`);
+        if(control){
+
+          $(control).prop('checked',true);
+        }
+      }
+      $('#sort').val(urlParams.get('sort'));
+      $('#limit').val(urlParams.get('limit'));  
+
+    });
+   
+    
+
+
+
+    
+
+    function selectParam(key, value, reset = false){
+      sessionStorage.setItem("category",value);
+      if (reset){
+        for (let key in params){
+          urlParams.set(key, params[key]);
+        }
+      }
+
+      urlParams.set(key, value);
+      let url = `/books?${urlParams.toString()}`;
+      location.href = url;
+    }
+  </script>

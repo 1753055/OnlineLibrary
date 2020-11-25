@@ -1,0 +1,53 @@
+
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log In</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/css/signup.css">
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                    <form action="/users/login" method="POST" id="signup-form" class="signup-form">
+                        <h2 class="form-title">Đăng nhập</h2>
+                        {{#if message}}
+                        <div class="form-group">
+                            <strong class="alert {{type}}">{{message}}</strong>
+                        </div>
+                        {{/if}}
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="username" id="username" placeholder="Email"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password" id="password" placeholder="Mật khẩu"/>
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="keepLoggedIn" id="keepLoggedIn" class="agree-term" />
+                            <label for="keepLoggedIn" class="label-agree-term"><span><span></span></span>Giữ trạng thái đăng nhập</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Đăng nhập"/>
+                        </div>
+                    </form a>
+                    <p class="loginhere">
+                        Không có tài khoản ? <a href="/users/signup" class="loginhere-link">Đăng kí</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->

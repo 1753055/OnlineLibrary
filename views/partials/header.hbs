@@ -1,0 +1,69 @@
+<!--================= Start header area ===================-->
+<div id = "includeHeader">
+      <div class="header">
+            <div class="float-right" >
+                <form class="form-inline">
+                <a href="/cart"> <img src="/img/cart.png" alt="" id="icongiohang"  style="width: 40px; height: 40px;"><span class="nav-shop__circle" id="cart-badge">{{totalQuantity}}</span> </a>
+                
+                {{#if isLoggedIn}}
+                <img src='{{avt}}' alt="" style="border-radius: 100%; width: 50px; height: 50px;">
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{fullname}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/users/info">Xem thông tin</a>
+                    <a class="dropdown-item" href="#">Đổi mật khẩu(chưa sử dụng được)</a>
+                    <a class="dropdown-item" href="/users/logout">Đăng xuất</a>
+                    </div>
+                </div>                 
+                {{else}}
+                <a class="btn btn-primary mb-2" href="/users/login">Đăng nhập</a>
+                {{/if}}
+                </form>                
+        </div>
+         <div class="fluid-container">
+               
+              <nav class="navbar navbar-expand-sm navbar-dark">
+                  <a class="navbar-brand" href="/" id="thuvien">
+                    <img src="/img/logo.png" class="float-left" style="margin-right:20px ;" id="logo" alt="">  
+                    Thư Viện <br> <p>University of Science</p></a>
+                  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                      aria-expanded="false" aria-label="Toggle navigation"></button>
+                  <div class="collapse navbar-collapse" id="collapsibleNavId">
+                      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                          <li class="nav-item active">
+                              <a class="nav-link " id="trangchu" href="/" >Trang Chủ </a>
+                          </li>
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="nav-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dịch Vụ</a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="books">Sách theo thể loại</a>
+                                {{#if isLoggedIn}}
+
+                                {{else}}
+                                <a class="dropdown-item" href="/users/signup">Đăng ký tài khoản</a>
+                                {{/if}}
+                              </div>
+                          </li>
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="nav-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Giới Thiệu</a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                  <a class="dropdown-item" href="/gioithieutruong">Giới thiệu thư viện</a>
+                                  <a class="dropdown-item" href="/gioithieutruong">Giới thiệu trường</a>
+                              </div>
+                          </li>
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="nav-item" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Trợ Giúp</a>
+                              <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                  <a class="dropdown-item" href="/gioithieutruong">Hướng dẫn sử dụng</a>
+                                  <a class="dropdown-item" href="/gioithieutruong">Nội quy</a>
+                              </div>
+                          </li>
+                      </ul>               
+                  </div>
+              </nav>
+      </div>     
+      </div>
+</div>
+<!--================= End header area ===================-->

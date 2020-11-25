@@ -1,0 +1,223 @@
+<main class="site-main">
+
+<div id="findInput" >
+    <form action="/books" id="searchBookIndex" method="GET">
+<div class="input-group">
+    <input type="text" placeholder="Sách cần tìm" name="search" id="searchInput" >
+    <div class="input-group-append">
+        <a class="input-group-text" onclick="document.getElementById('searchBookIndex').submit();" id="searchIcon">
+        <img type="submit" src="/img/glass.png" alt="" height="30px" >
+        </a>
+    </div>
+    </div>
+    </form>
+</div>
+    
+<br>    
+<div class="container">
+    <div class="row">
+            
+        <div class="col-9">
+            <div class="alert alert-primary" role="alert">
+                <h4>Chào mừng đến với Thư viện</h4>
+                <hr>
+                <ul>
+                    <li><a href="#">Giờ mở cửa Thư viện</a></li>
+                    <li><a href="#">Hướng dẫn tìm sách trong thư viện</a></li>
+                    <li><a href="#">Hướng dẫn đăng ký thành viên</a></li>
+                </ul>
+            </div> 
+        </div>
+        <div class="col-3">
+            <h4 style="padding-left:90px">Sách hot</h4>
+            <div class="alert alert-primary" >
+                    <div class="bd-example">
+                        <div id="caption" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                            <li data-target="#caption" data-slide-to="0" class="active"></li>
+                            <li data-target="#caption" data-slide-to="1"></li>
+                            <li data-target="#caption" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                            <div class="carousel-item active">
+                               <a href="/books/3"><img src="/img/3.jpg" class="d-block w-100 " alt="..."> </a>
+                            </div>
+                            <div class="carousel-item">
+                                 <a href="/books/6"><img src="/img/6.jpg" class="d-block w-100 " alt="..."> </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="/books/2"><img src="/img/2.jpg" class="d-block w-100 " alt="..."> </a>
+                                
+                            </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <h3>Dịch vụ dành cho: </h3><br>
+
+    <div class="accordion" id="accordionExample">
+        <div class="row">
+            <div class="col">                 
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Sinh Viên
+                    </button>
+                </h2>
+                </div>             
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <ul>
+                        <li><a href="#">Giờ mở cửa</a></li>
+                        <li><a href="#">Khám phá tài nguyên</a></li>
+                        <li><a href="#">Mượn tài liệu</a></li>
+                        <li><a href="#">Giáo trình</a></li>
+                        <li><a href="#">Tài liệu trực tuyến</a></li>
+                        <li><a href="#">Đề xuất tài liệu</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>             
+            </div>
+            <div class="col">
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Giảng viên
+                    </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <ul>
+                            <li><a href="#">Tìm hiểu dịch vụ</a></li>
+                            <li><a href="#">Mượn tài liệu</a></li>
+                            <li><a href="#">Tài liệu theo ngành</a></li>
+                            <li><a href="#">Mượn liên thư viện VNU</a></li>
+                            <li><a href="#">Yêu cầu mua tài liệu</a></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>              
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Khách
+                        </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul>
+                                <li><a href="#">Hỗ trợ truy cập</a></li>
+                                <li><a href="#">Tài liệu nghiên cứu</a></li>
+                                <li><a href="#">Đề xuất truy cập tài nguyên</a></li>
+                                <li><a href="#">Mượn liên thư viện VNU</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+<hr>
+<h3>Sách mới:</h3><br>
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="card-deck">
+
+                {{#each book}}
+               
+                 <div class="card" >
+                    <a  style="text-decoration: none; color:black" href="books/{{id}}">
+                    <img src={{thumbnailPath}}  class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5  class="card-title">{{title}}</h5>
+                    <p class="card-text">{{description}}</p>
+                    </div>
+                    </<div>
+                </div>
+                
+                {{/each}}
+        </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card-deck">
+                
+                {{#each book2}}
+                
+                 <div class="card" >
+                    <a  style="text-decoration: none; color:black" href="books/{{id}}">
+
+                    <img src={{thumbnailPath}}  class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <p class="card-text">{{description}}</p>
+                    </div>
+                    </a>
+                </div>
+                {{/each}}
+        </div>
+        </div>
+    <a class="carousel-control-prev" style="height: 200px; border-radius:100%; position:absolute; top:40%; left:-10%;" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next"style="height: 200px; border-radius:100%; position:absolute; top:40%; right:-10%;" id="prevNextButton" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    </div>
+
+</div>
+
+</main>
+
+  <script>
+    let urlParams = new URLSearchParams(location.search);
+    let params = {
+      limit: 9,
+      sort: 'title',
+      search: '',
+      page: 1
+    }
+
+    for (let key in params){
+      if (!urlParams.has(key)){
+        urlParams.append(key, params[key]);
+      }
+    }
+
+    $('#sort').val(urlParams.get('sort'));
+    $('#limit').val(urlParams.get('limit'));
+
+
+    function selectParam(key, value, reset = false){
+      if (reset){
+        for (let key in params){
+          urlParams.set(key, params[key]);
+        }
+      }
+
+      urlParams.set(key, value);
+      let url = `/books?${urlParams.toString()}`;
+      location.href = url;
+    }
+  </script>
